@@ -1,0 +1,55 @@
+// Colors
+$blue: #02B4D8;
+$ligth-blue: #90E0EF;
+
+// Breakpoints
+$breakpoints: (
+  xs: 512px,
+  sm: 768px,
+  md: 896px,
+  lg: 1152px,
+  xl: 1280px
+);
+
+@mixin breakpoint( $breakpoint ) {
+    @if map-has-key( $breakpoints, $breakpoint ) {
+       @media ( max-width: #{ map-get( $breakpoints, $breakpoint ) } ) {
+         @content;
+       }
+    } @else if type_of( $breakpoint ) == number and unit( $breakpoint ) == px or unit( $breakpoint ) == em or unit( $breakpoint ) == rem {
+       @media (max-width: $breakpoint ) {
+         @content;
+       }
+     } @else {
+       @warn "Nie można pobrać żadnej wartości z `#{$breakpoint}`. Nie jest zdefiniowany w mapie `$breakpoints` lub jest nieprawidłową liczbą px, em, lub rem.";
+    }
+  }
+
+// Fonts
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: optional;
+    src: url('@/assets/fonts/roboto-v29-latin-ext_latin-regular.woff2');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: optional;
+    src: url('@/assets/fonts/roboto-v29-latin-ext_latin-500.woff2');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: optional;
+    src: url('@/assets/fonts/roboto-v29-latin-ext_latin-700.woff2');
+}
+
+// Default Values
+* {
+    margin: 0;
+    padding: 0;
+}
