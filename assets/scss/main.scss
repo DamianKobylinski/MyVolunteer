@@ -1,6 +1,6 @@
 // Colors
 $blue: #02B4D8;
-$ligth-blue: #90E0EF;
+$light-blue: #90E0EF;
 
 // Breakpoints
 $breakpoints: (
@@ -50,6 +50,10 @@ $breakpoints: (
 
 // Default Values
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  overflow-y: hidden;
 }
