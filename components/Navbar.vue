@@ -3,29 +3,30 @@
     <nuxt-link to="/">
       <img src="@/assets/img/MyVolunteer_Logo.png" alt="My Volunteer blue logo on transpratent background">
     </nuxt-link>
-    <div class="navigation">
-      <ul>
-        <li>
-          <nuxt-link to="/">
-            Zadania
-          </nuxt-link>
-        </li>
-        <li>Wolontariusze</li>
-        <li>O nas</li>
-      </ul>
-    </div>
     <div class="actions">
+      <p>Logowanie</p>
+      <p>Rejestracja</p>
       <button class="create-task">
-        <span>Utwórz zadanie</span>
+        <span>Zadania</span>
       </button>
-      <p>Login</p>
+    </div>
+    <div class="hamburger-actions" @click="toggleNavbar">
+      <span />
+      <span />
+      <span />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+    toggleNavbar () {
+      document.querySelector('.actions').classList.toggle('actions-active')
+      document.querySelector('.hamburger-actions').classList.toggle('hamburger-actions-active')
+    }
+  }
 }
 </script>
 
@@ -41,33 +42,9 @@ export default {
     & img {
       width: 250px;
       padding: 0 20px;
-    }
-    & .navigation {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-      & ul {
-          display: flex;
-          align-items: center;
-          align-content: space-between;
-          list-style: none;
-          & li {
-              color: $blue;
-              padding: 0 35px;
-              transition: all 0.3s ease-in;
-              &:hover {
-                  color: $light-blue;
-                  cursor: pointer;
-              }
-          }
-          & a {
-              text-decoration: none;
-              color: $blue;
-              transition: all 0.3s ease-in;
-              &:hover {
-                  color: $light-blue;
-              }
-          }
+      @include breakpoint(xs) {
+        padding: 0;
+        width: 200px;
       }
     }
     & .actions {
@@ -76,23 +53,92 @@ export default {
         align-items: center;
         justify-content: center;
         padding: 0 20px;
+        @include breakpoint(md) {
+          position: absolute;
+          height: 93vh;
+          width: 50%;
+          right: 0;
+          top: 0;
+          flex-direction: column-reverse;
+          background: linear-gradient(to right bottom, $blue, $light-blue);
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in-out;
+        }
         & button {
             background-color: $blue;
             color: #fff;
             border: none;
+            border: solid 3px $blue;
             border-radius: 21px;
-            padding: 15px 30px;
+            padding: 10px 40px;
+            margin: 0 30px;
             font-family: 'Roboto', Arial, Helvetica, sans-serif;
             font-size: 17px;
             font-weight: 400;
+            transition: all ease-in-out 0.3s;
+            @include breakpoint(md) {
+              margin: 0;
+              margin-top: 100px;
+              font-size: 20px;
+              border-radius: 10px;
+              font-weight: 500;
+            }
             &:hover {
                 cursor: pointer;
+                border: solid 3px $blue;
+                background-color: #fff;
+                color: $blue;
             }
         }
         & p {
             color: $blue;
-            padding: 0 50px;
+            padding: 0 30px;
+            cursor: pointer;
+            @include breakpoint(md) {
+              color: #fff;
+              margin-top: 100px;
+              font-size: 20px;
+              font-weight: 500;
+            }
         }
+    }
+    & .actions-active {
+      transform: translateX(0%);
+    }
+    & .hamburger-actions {
+      z-index: 99;
+      display: inline-block;
+      padding: 20px 20px;
+      display: none;
+      cursor: pointer;
+      @include breakpoint(md) {
+        display: block;
+      }
+      & span {
+        width: 30px;
+        height: 5px;
+        border-radius: 10px;
+        background-color: $blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        transition: all 0.3s ease-in;
+      }
+    }
+    & .hamburger-actions-active {
+      & span {
+        background-color: #fff;
+      }
+      & span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      & span:nth-child(2) {
+        opacity: 0;
+      }
+      & span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
     }
 }
 </style>
