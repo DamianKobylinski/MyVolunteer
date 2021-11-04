@@ -57,8 +57,8 @@ export default {
         padding: 0 20px;
         @include breakpoint(md) {
           position: absolute;
-          height: 93vh;
-          width: 50%;
+          height: 100vh;
+          width: 70%;
           right: 0;
           top: 0;
           flex-direction: column-reverse;
@@ -80,6 +80,7 @@ export default {
             transition: all ease-in-out 0.3s;
             @include breakpoint(md) {
               margin: 0;
+              margin-bottom: 100px;
               margin-top: 100px;
               font-size: 20px;
               border-radius: 10px;
@@ -96,11 +97,15 @@ export default {
             color: $blue;
             padding: 0 30px;
             cursor: pointer;
+            transition: opacity 0.2s ease-in;
             @include breakpoint(md) {
               color: #fff;
-              margin-top: 100px;
+              margin-bottom: 100px;
               font-size: 20px;
               font-weight: 500;
+            }
+            &:hover {
+              opacity: 0.75;
             }
         }
     }
