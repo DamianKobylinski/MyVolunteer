@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Navbar />
     <Nuxt />
   </div>
@@ -14,3 +14,16 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.app {
+  overflow-x: hidden;
+  min-width: 100%;
+  position: absolute;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+</style>

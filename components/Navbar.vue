@@ -1,14 +1,16 @@
 <template>
   <div class="navbar-wrapper">
     <nuxt-link to="/">
-      <img src="@/assets/img/MyVolunteer_Logo.png" alt="My Volunteer blue logo on transpratent background">
+      <img src="@/assets/img/MyVolunteer_Logo.png" loading="lazy" alt="My Volunteer blue logo on transpratent background">
     </nuxt-link>
     <div class="actions">
       <p>Logowanie</p>
       <p>Rejestracja</p>
-      <button class="create-task">
-        <span>Zadania</span>
-      </button>
+      <nuxt-link to="/tasks">
+        <button class="create-task">
+          <span>Zadania</span>
+        </button>
+      </nuxt-link>
     </div>
     <div class="hamburger-actions" @click="toggleNavbar">
       <span />
