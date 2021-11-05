@@ -3,23 +3,23 @@
     <button class="make-task">
       <span>Utwórz zadanie</span>
     </button>
-    <div class="switch-tasks">
-      <span class="switch-header">Ogłoszenia</span>
-      <div class="switcher">
-        <input class="switch-checkbox" type="checkbox">
-        <label class="switch-label" for=""><span class="switch-button-label-span">Wolontariusze</span></label>
-      </div>
-    </div>
-    <div class="tasks-wrapper">
-      <div class="tasks">
-        <div class="task" />
-      </div>
+    <div class="tasks">
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
     </div>
   </div>
 </template>
 
 <script>
+import Task from '@/components/Task.vue'
+
 export default {
+  components: {
+    Task
+  },
   head () {
     return {
       title: 'My Volunteer | Zadania'
@@ -36,17 +36,16 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding: 40px 10px;
+    padding: 0 10px;
     & .make-task {
         background-color: $blue;
         color: #fff;
         border: none;
         border: solid 3px $blue;
-        border-radius: 21px;
+        border-radius: 11px;
         padding: 10px 40px;
-        margin: 0 30px;
+        margin: 15px 0;
         font-family: 'Roboto', Arial, Helvetica, sans-serif;
         font-size: 17px;
         font-weight: 400;
@@ -59,13 +58,14 @@ export default {
             color: $blue;
         }
     }
-    & .switch-tasks {
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        margin-top: 20px;
+    & .tasks {
+      min-height: 100%;
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
     }
 }
 </style>

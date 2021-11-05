@@ -34,10 +34,10 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-wrapper {
-    height: 80px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 17px;
     font-weight: 400;
+    padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
