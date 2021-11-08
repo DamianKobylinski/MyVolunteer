@@ -1,14 +1,14 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'my-volunteer',
+    title: 'My Volunteer',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pl'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'My Volunteer' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -17,12 +17,15 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
+  styleResources: {
+    scss: [
+      '@/assets/scss/main.scss'
+    ]
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -32,17 +35,33 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module'
   ],
+  eslint: {
+    fix: true
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    browserBaseURL: 'http://localhost:3000',
+    proxy: true
 
+  },
+  serverMiddleware: {
+    '/server': '~/server'
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+  build: {},
+  server: {
+    host: '0.0.0.0'
+  },
+  proxy: {
+    '/server': { target: 'http://localhost:3000/', pathRewrite: { '^/server': '' }, changeOrigin: true }
   }
 }

@@ -1,7 +1,16 @@
 <template>
-  <Tutorial />
+  <div>
+    Index
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'LandingPage',
+  head () {
+    return {
+      title: 'My Volunteer'
+    }
+  }
+}
 </script>
