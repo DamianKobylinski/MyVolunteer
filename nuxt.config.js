@@ -6,13 +6,13 @@ export default {
       lang: 'pl'
     },
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: 'My Volunteer'},
-      {name: 'format-detection', content: 'telephone=no'}
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'My Volunteer' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -43,12 +43,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    browserBaseURL: 'http://localhost:49712'
+    browserBaseURL: 'http://localhost:3000',
+    proxy: true
 
   },
   serverMiddleware: {
@@ -58,5 +60,8 @@ export default {
   build: {},
   server: {
     host: '0.0.0.0'
+  },
+  proxy: {
+    '/server': { target: 'http://localhost:3000/', pathRewrite: { '^/server': '' }, changeOrigin: true }
   }
 }

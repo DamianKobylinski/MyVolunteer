@@ -1,4 +1,4 @@
-<template v-on:load="takeTasks">
+<template>
   <div class="tasks-wrapper">
     <button class="make-task">
       <span @click="takeTasks">Utwórz zadanie</span>
@@ -18,32 +18,19 @@
 import axios from 'axios'
 import Task from '@/components/Task.vue'
 
-const API = 'http://192.168.1.32:49712/tasks'
+const API = 'http://localhost:3000/tasks'
 
 export default {
   components: {
     Task
   },
-  data () {
-    return {
-      tasks: []
-    }
+  async asyncData (context) {
+    const response = await context.app.$axios.$get(API)
+    return { tasks: response }
   },
   head () {
     return {
       title: 'My Volunteer | Zadania'
-    }
-  },
-  methods: {
-    async takeTasks () {
-      await axios
-        .post(API, this.tasks)
-        .then((result) => {
-          console.log(result.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   }
 }
