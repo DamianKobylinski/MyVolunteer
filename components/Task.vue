@@ -5,15 +5,15 @@
         <img width="50px" src="@/assets/img/User_default_image.png" alt="User Image">
       </div>
       <div class="user-name">
-        Adam Kowalski / Pomoc
+        {{ `${name} ${surname} ` }}
       </div>
     </div>
     <div class="task-content">
-      Potrzebuję pomocy, żeby..
+      {{ content }}
     </div>
     <div class="task-bottom">
       <div class="task-date">
-        04 Lipca 2021 roku
+        {{ date }}
       </div>
     </div>
     <button class="share">
@@ -26,7 +26,29 @@
 
 <script>
 export default {
-  name: 'Task'
+  name: 'Task',
+  props: {
+    name: {
+      type: String,
+      default: '',
+      required: true
+    },
+    surname: {
+      type: String,
+      default: '',
+      required: true
+    },
+    content: {
+      type: String,
+      default: '',
+      required: true
+    },
+    date: {
+      type: String,
+      default: '',
+      required: true
+    }
+  }
 }
 </script>
 

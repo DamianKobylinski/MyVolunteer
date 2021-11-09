@@ -1,22 +1,22 @@
 <template>
   <div class="tasks-wrapper">
-    {{ response }}
     <button class="make-task">
       <span>Utwórz zadanie</span>
     </button>
     <div class="tasks">
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
+      <Task
+        v-for="task in tasks"
+        :key="task.id"
+        :name="task.name"
+        :surname="task.surname"
+        :content="task.information"
+        :date="task.data"
+      />
     </div>
   </div>
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import axios from 'axios'
 import Task from '@/components/Task.vue'
 
 // const API = 'http://localhost:3001/api/test'
@@ -26,8 +26,9 @@ export default {
     Task
   },
   async asyncData (context) {
-    const response = await context.app.$axios.$get('/api/tasks')
-    return { response }
+    const tasks = await context.app.$axios.$get('/api/tasks')
+      .then(res => res.data)
+    return { tasks }
   },
   head () {
     return {

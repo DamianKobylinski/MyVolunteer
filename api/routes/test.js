@@ -20,7 +20,6 @@ router.use('/tasks', (req, res) => {
         throw err
       } else {
         res.json({
-          success: true,
           data: result
         })
       }
