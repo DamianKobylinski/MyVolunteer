@@ -54,7 +54,7 @@ export default {
 
   },
   serverMiddleware: {
-    '/server': '~/server'
+    '/api': '~/api'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
@@ -62,6 +62,6 @@ export default {
     host: '0.0.0.0'
   },
   proxy: {
-    '/server': { target: 'http://localhost:3000/', pathRewrite: { '^/server': '' }, changeOrigin: true }
+    '/api/': { target: 'http://localhost:3000', pathRewrite: { '^/api/': '' }, changeOrigin: true }
   }
 }

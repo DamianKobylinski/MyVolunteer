@@ -1,7 +1,8 @@
 <template>
   <div class="tasks-wrapper">
+    {{ response }}
     <button class="make-task">
-      <span @click="takeTasks">Utwórz zadanie</span>
+      <span>Utwórz zadanie</span>
     </button>
     <div class="tasks">
       <Task />
@@ -18,15 +19,15 @@
 import axios from 'axios'
 import Task from '@/components/Task.vue'
 
-const API = 'http://localhost:3000/tasks'
+// const API = 'http://localhost:3001/api/test'
 
 export default {
   components: {
     Task
   },
   async asyncData (context) {
-    const response = await context.app.$axios.$get(API)
-    return { tasks: response }
+    const response = await context.app.$axios.$get('/api/test')
+    return { response }
   },
   head () {
     return {
