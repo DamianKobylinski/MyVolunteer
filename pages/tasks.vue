@@ -26,7 +26,7 @@ export default {
     Task
   },
   async asyncData (context) {
-    const response = await context.app.$axios.$get('/api/test')
+    const response = await context.app.$axios.$get('/api/tasks')
     return { response }
   },
   head () {
